@@ -89,15 +89,14 @@ def show_record(record):
 
 
 def main():
-    command = input('\
-    __________________________________________\n\
+    print('__________________________________________\n\
     :1 - Показать все записи\n\
     :4 - Добавить новый контакт\n\
     :5 - Удалить контакт\n\
     :6 - Изменить номер телефона у контакта\n\
-    :7 - Выход\n\
-    Введите запрос (имя, телефон или ID) или номер команды через двоеточие - ')
-
+    :7 - Выход')
+    command = input('\
+Введите запрос (имя, телефон или ID) или номер команды через двоеточие - ')
     path = 'phone_book.txt'
     book = create_book_from_db(path)
     if command == ':1':
@@ -111,8 +110,13 @@ def main():
     elif command == ':7':
         exit()
     else:
-        show_book(find_records(command, book))
+        search_result = find_records(command, book)
+        if search_result:
+            show_book(search_result)
+        else:
+            print('Ничего не найдено, попробуйте другой запрос.')
 
 
 if __name__ == "__main__":
-    main()
+    while True:
+        main()
