@@ -8,7 +8,7 @@ config.read('token.ini')
 app = ApplicationBuilder().token(config['DEFAULT']['token']).build()
 
 
-app.add_handler(CommandHandler("help", commands))
-app.add_handler(CommandHandler("Calc", calculate))
+app.add_handler(CommandHandler("start", commands))
+app.add_handler(CommandHandler("calc", calculate))
 
 app.run_polling()
