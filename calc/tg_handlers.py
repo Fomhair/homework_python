@@ -5,7 +5,8 @@ from my_math import calc as c
 
 
 async def commands(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    result = '/calc <YOUR EXPRESSION>\n' \
+    result = f'Hi, {update.effective_user.full_name}!\n' \
+             '/calc <YOUR EXPRESSION>\n' \
              'The bot supports floating point numbers \n' \
              'and the following arithmetic operations: \n' \
              '(), ^, /, *, -, +'
