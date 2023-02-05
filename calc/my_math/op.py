@@ -5,17 +5,16 @@ def check_priority(formula):
     operands = [['s', 'c'], ['^'], ['*', '/'], ['+', '-']]
     for op in operands:
         for i in range(len(formula) - 1):
+            print(formula[i])
             if formula[i + 1] in op:
                 tmp = [ops(x=formula[i], y=formula[i + 2], op=formula[i + 1])]
                 return check_priority(formula[:i] + tmp + formula[(i+3):])
-            elif formula[i + 1] not in op and formula[i] == '-':
+            elif i == 0 and formula[i] == '-':
                 tmp = [ops(x=0, y=formula[i + 1], op=formula[i])]
                 return check_priority(tmp + formula[(i + 2):])
             elif formula[i] in operands[0]:
                 tmp = [trig(x=formula[i+1], op=formula[i])]
-                print(tmp)
-                return check_priority(formula[:i] + tmp + formula[(i+2):])
-
+                return check_priority(formula[:i] + tmp + formula[(i+3):])
     return formula[0]
 
 
@@ -31,6 +30,7 @@ def ops(x, y, op):
     elif op == '+':
         return x + y
     elif op == '-':
+        print(f'{x}, {y}')
         return x - y
 
 
